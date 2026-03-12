@@ -1,8 +1,9 @@
 import express from "express";
-import { fetchStockPrice } from "../controllers/stockController.js";
+import { fetchStockPrice, getPortfolio } from "../controllers/stockController.js";
 
-const app = express.Router();
+const router = express.Router();
 
-app.get('/:symbol' , fetchStockPrice);
+router.get('/' , getPortfolio);
+router.get('/:symbol' , fetchStockPrice);
 
-export default app;
+export default router;
