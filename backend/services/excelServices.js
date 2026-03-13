@@ -15,18 +15,34 @@ export const readExcelFile = () => {
 
   const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
 
-  const dataRows = rows.slice(2); 
+  const dataRows = rows.slice(2);
 
-  const portfolio = dataRows
-    .filter(row => row[1]) 
-    .map(row => ({
-      name: row[1],
-      symbol: row[1].replace(/\s+/g, "").toUpperCase() + ".NS",
-      purchasePrice: Number(row[2]),
-      quantity: Number(row[3]),
+  let currentSector = "unknown";
+
+  const portfolio = [];
+
+  dataRows.forEach((row) => {
+    const name = row[1];
+    const price = row[2];
+    const quantity = row[3];
+
+    if (!name) return;
+
+    if (!price && !quantity) {
+      currentSector = name;
+      return
+    }
+
+    portfolio.push({
+      name: name,
+      symbol: name.replace(/\s+/g, "").toUpperCase() + ".NS",
+      purchasePrice: Number(price),
+      quantity: Number(quantity),
       exchangeCode: row[6] || "NSE",
-      sector: "Unknown"
-    }));
+      sector: currentSector
+    })
+
+  })
 
   return portfolio;
 };
