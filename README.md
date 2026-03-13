@@ -54,27 +54,6 @@ Deployment
 
 ---
 
-## Project Structure
-
-FinSight
-│
-├── backend
-│   ├── routes
-│   ├── services
-│   ├── data
-│   └── server.js
-│
-├── frontend
-│   ├── app
-│   ├── components
-│   ├── hooks
-│   ├── types
-│   └── utils
-│
-└── README.md
-
----
-
 ## How It Works
 
 1. Portfolio data is read from an Excel file on the backend.
