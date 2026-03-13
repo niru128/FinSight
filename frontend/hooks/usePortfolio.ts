@@ -3,7 +3,7 @@ import { Stock, Portfolio } from "@/types/stock";
 import { buildPortfolio } from "@/utils/calculations";
 import axios from "axios";
 
-const BASEURL =  "http://localhost:5000";
+const BASEURL =  "https://finsight-0c05.onrender.com";
 
 export default function usePortfolio() {
   const [data, setData] = useState<Portfolio[]>([]);
